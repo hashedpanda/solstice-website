@@ -1,0 +1,29 @@
+---
+const links = [
+	{ label: "Home", path: "/" },
+	{ label: "Travel Advisories", path: "/travel-advisories" },
+];
+---
+
+<nav id="nav">
+	<ul>
+		{
+			links.map((link) => (
+				<li>
+					<a href={link.path}>{link.label}</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>
+<style>
+	#nav ul {
+		display: flex;
+		list-style: none;
+		gap: 1.5rem;
+	}
+
+	#nav a {
+		text-decoration: none;
+	}
+</style>

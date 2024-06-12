@@ -1,0 +1,55 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	label: string;
+	icon: string;
+	path: string;
+}
+
+const { label, icon, path } = Astro.props;
+---
+
+<li class="block-link">
+	<a href={path}>
+		<Icon class="block-link-icon" name={icon} />
+		<div>{label}</div>
+	</a>
+</li>
+<style>
+	.block-link {
+		background-color: #e8e8e8;
+		border: 0px solid #aaaaaa;
+		border-radius: 0.5rem;
+
+		transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+	}
+
+	.block-link:hover {
+		background-color: #e0e0e0;
+	}
+
+	.block-link:active {
+		background-color: #909090;
+	}
+
+	.block-link a {
+		width: 100%;
+		height: 100%;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+
+		text-decoration: none;
+
+		color: #000;
+	}
+
+	.block-link-icon {
+		width: 32px;
+		height: 32px;
+	}
+</style>

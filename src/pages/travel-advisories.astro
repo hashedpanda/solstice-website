@@ -1,0 +1,145 @@
+---
+import Accordion from "../components/Accordion.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Advisory {
+	country: string;
+	kind: Kind;
+	reason: string;
+}
+
+type Kind = "normal" | "caution" | "necessary" | "avoid";
+
+const advisory: Advisory[] = [
+	{
+		country: "Country A",
+		kind: "normal",
+		reason: "",
+	},
+	{
+		country: "Country B",
+		kind: "caution",
+		reason: "This country is politically unstable, such that it may suddenly become unsafe.",
+	},
+	{
+		country: "Country C",
+		kind: "necessary",
+		reason: "There's this virus going around over there. I know right, completely unheard of.",
+	},
+	{
+		country: "Country D",
+		kind: "avoid",
+		reason: "Hell itself has ripped open here in order to swallow the non-believers.",
+	},
+];
+
+const summaries: Record<Kind, string> = {
+	normal: "Normal security precautions",
+	caution: "Higher degree of caution",
+	necessary: "Necessary travel only",
+	avoid: "Do not travel",
+};
+---
+
+<BaseLayout>
+	<ul class="advisories">
+		{
+			advisory.map((advisory) => (
+				<li class={`advisory-${advisory.kind}`}>
+					<Accordion>
+						<div class="advisory-label" slot="label">
+							{advisory.country}
+							<div class="advisory-summary">
+								{summaries[advisory.kind]}
+							</div>
+						</div>
+						<p>{advisory.reason}</p>
+						{advisory.kind == "normal" ? (
+							<p>
+								Take similar security precautions to those you
+								would normally take within Solstice.
+							</p>
+						) : advisory.kind == "caution" ? (
+							<p>
+								The security situation in this country may
+								change quickly and unexpectedly. Be cautios,
+								monitor local media, and be prepared to exit the
+								country early if necessary.
+							</p>
+						) : advisory.kind == "necessary" ? (
+							<p>
+								The risk associated with travel may be so great
+								that you should consider if your trip is really
+								necessary. Necessary travel may include
+								funerals, court cases, and important business
+								travel. Regular tourism is not considered
+								necessary. If you are in the country and your
+								trip is not necessary, you should attempt to
+								leave at the earliest possible safe opportunity.
+							</p>
+						) : (
+							<p>
+								Avoid all travel to this country. If you decide
+								to travel anyway, seek professional security
+								advice. If you are already within the country,
+								you should attempt to leave at the earliest
+								possible safe opportunity.
+							</p>
+						)}
+					</Accordion>
+				</li>
+			))
+		}
+	</ul>
+</BaseLayout>
+<style>
+	.advisories {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+
+		list-style: none;
+		padding-left: 0;
+	}
+
+	.advisory-label {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.advisory-summary {
+		font-size: 0.75em;
+		font-weight: normal;
+	}
+
+	.advisory-normal {
+		--expander-button: #66ee66;
+		--expander-button-hover: #88f888;
+		--expander-contents: #a0ffa0;
+	}
+
+	/*.advisory-normal {
+		--expander-button: #8888ff;
+		--expander-button-hover: #9595ff;
+		--expander-contents: #bbbbff;
+	}*/
+
+	.advisory-caution {
+		--expander-button: #f2eb44;
+		--expander-button-hover: #fff466;
+		--expander-contents: #ffffa0;
+	}
+
+	.advisory-necessary {
+		--expander-button: #ffaa00;
+		--expander-button-hover: #ffbe00;
+		--expander-contents: #ffc888;
+	}
+
+	.advisory-avoid {
+		--expander-button: #ff6666;
+		--expander-button-hover: #ff8888;
+		--expander-contents: #ffa0a0;
+	}
+</style>

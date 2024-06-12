@@ -1,0 +1,86 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	label?: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div class="expander">
+	<button class="expander-button">
+		<div>{label != null ? label : <slot name="label" />}</div>
+		<Icon
+			class="expander-icon"
+			name="ph:caret-left"
+			aria-label="Toggle open icon"
+		/>
+	</button>
+	<div class="expander-contents">
+		<slot />
+	</div>
+</div>
+<style>
+	.expander {
+		border-radius: 0.5rem;
+	}
+
+	.expander-button {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		width: 100%;
+		padding: 0.25rem 0.75rem;
+
+		border: none;
+		border-radius: 0.5rem;
+
+		font-size: 1.5rem;
+		font-weight: 600;
+
+		background-color: var(--expander-button, #cccccc);
+		transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+		cursor: pointer;
+	}
+
+	.expander-button:hover {
+		background-color: var(--expander-button-hover, #d8d8d8);
+	}
+
+	.expander-open .expander-button {
+		border-radius: 0.5rem 0.5rem 0 0;
+	}
+
+	.expander-open .expander-icon {
+		transform: rotate(-90deg);
+	}
+
+	.expander-contents {
+		display: none;
+
+		border-radius: 0 0 0.5rem 0.5rem;
+	}
+
+	.expander-open .expander-contents {
+		display: block;
+
+		background-color: var(--expander-contents, #eeeeee);
+
+		/* Weird CSS hack, we get actually padding from the first and last <p> elements */
+		padding: 0.001rem 1rem;
+	}
+</style>
+<script>
+	const expanders = document.querySelectorAll(".expander");
+
+	for (const expander of expanders) {
+		expander
+			.querySelector<HTMLButtonElement>(".expander-button")
+			?.addEventListener("click", () => {
+				expander.classList.toggle("expander-open");
+			});
+	}
+</script>

@@ -1,11 +1,49 @@
 ---
+import { Icon } from "astro-icon/components";
 import FictionalNotice from "./FictionalNotice.astro";
 import FlagAndName from "./FlagAndName.astro";
 import Navigation from "./Navigation.astro";
 ---
 
-<header>
-	<FictionalNotice />
-	<FlagAndName />
-	<Navigation />
+<header id="header">
+	<div>
+		<FlagAndName />
+	</div>
+	<div>
+		<Navigation />
+	</div>
+	<div>
+		<a id="aircs-link">
+			<div>aircs.racing</div>
+			<Icon name="ph:arrow-up-right-bold" />
+		</a>
+	</div>
 </header>
+<style>
+	#header {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	#header > :nth-child(1) {
+		display: flex;
+		justify-content: left;
+	}
+
+	#header > :nth-child(2) {
+		display: flex;
+		justify-content: center;
+	}
+
+	#header > :nth-child(3) {
+		display: flex;
+		justify-content: end;
+	}
+
+	#aircs-link {
+		display: flex;
+		justify-content: end;
+		align-items: center;
+		gap: 1rem;
+	}
+</style>

@@ -1,15 +1,56 @@
 ---
+import BlockLink from "../components/BlockLink.astro";
+import BlockLinkList from "../components/BlockLinkList.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
 	<h1>Welcome to Solstice!</h1>
 	<p>A nation of peace, democracy, and cooperation</p>
+	<p>
+		One of the few democracies on bnbmc, Solstans take pride in knowing that
+		when decisions on the future of the country are made, their voices are
+		heard.
+	</p>
+	<h2>Learn more</h2>
+	Find useful information about Solstice:
 	<h2>Information</h2>
-	<ul>
-		<li>History</li>
-		<li>Government</li>
-		<li>Provinces</li>
-		<li>Travel advisories</li>
-	</ul>
+	<BlockLinkList>
+		<BlockLink
+			title="Government"
+			description="How the federal government works"
+			icon="ph:bank"
+			path="/government"
+		/>
+		<BlockLink
+			title="Citizenship & Immigration"
+			description="Moving to Solstice and becoming a citizen"
+			icon="ph:flag"
+			path="/citizenship"
+		/>
+		<BlockLink
+			title="Democracy"
+			description="Have your say in how the country is run"
+			icon="ph:users-three"
+			path="/government"
+		/>
+		<BlockLink
+			title="Provinces"
+			description="Like mini-countries of their own"
+			icon="ph:city"
+			path="/government"
+		/>
+		<BlockLink
+			title="Government"
+			description="Sending and receiving mail in Solstice"
+			icon="ph:envelope-open"
+			path="/government"
+		/>
+		<BlockLink
+			title="Transportation"
+			description="Getting around inside Solstice"
+			icon="ph:airplane-takeoff"
+			path="/government"
+		/>
+	</BlockLinkList>
 </BaseLayout>

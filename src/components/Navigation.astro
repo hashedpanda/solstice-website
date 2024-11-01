@@ -21,9 +21,22 @@ const links = [
 		display: flex;
 		list-style: none;
 		gap: 1.5rem;
+		padding-left: 0;
+		width: fit-content;
 	}
 
 	#nav a {
 		text-decoration: none;
+		transition: color 0.2s ease-out;
+
+		color: black;
+	}
+
+	#nav a:hover {
+		color: var(--neutral-300);
+	}
+
+	#nav a:active {
+		color: var(--neutral-100);
 	}
 </style>

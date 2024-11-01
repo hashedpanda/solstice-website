@@ -1,3 +1,32 @@
+:root {
+	--neutral-50: hsl(210 3 10);
+	--neutral-100: hsl(210 3 19);
+	--neutral-200: hsl(210 3 29);
+	--neutral-300: hsl(210 3 39);
+	--neutral-400: hsl(210 3 48);
+	--neutral-500: hsl(210 4 58);
+	--neutral-600: hsl(210 7 68);
+	--neutral-700: hsl(210 11 78);
+	--neutral-800: hsl(210 21 87);
+	--neutral-900: hsl(210 43 93);
+	--neutral-950: hsl(210 100 98);
+
+	--accent-100: hsl(210 100 10);
+	--accent-200: hsl(210 100 20);
+	--accent-300: hsl(210 100 30);
+	--accent-400: hsl(210 100 40);
+	--accent-500: hsl(210 100 50);
+	--accent-600: hsl(210 100 60);
+	--accent-700: hsl(210 100 70);
+	--accent-800: hsl(210 100 80);
+	--accent-900: hsl(210 100 90);
+	--accent-950: hsl(210 100 93);
+
+	--spacing-1: 0.25rem;
+	--spacing-2: 0.5rem;
+	--spacing-4: 1rem;
+}
+
 * {
 	box-sizing: border-box;
 }

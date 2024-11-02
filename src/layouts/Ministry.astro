@@ -1,0 +1,34 @@
+---
+import type { ComponentProps } from "astro/types";
+
+import Person from "../components/Person.astro";
+import MarkdownPage from "./MarkdownPage.astro";
+
+interface OwnProps {
+	frontmatter: {
+		minister: ComponentProps<typeof Person>["name"];
+	}
+}
+
+type Props = OwnProps & ComponentProps<typeof MarkdownPage>;
+
+const { frontmatter } = Astro.props;
+---
+<MarkdownPage frontmatter={frontmatter}>
+	<div id="minister">
+		<b>Minister:</b>
+		<Person name={frontmatter.minister} />
+	</div>
+	<slot />
+</MarkdownPage>
+<style>
+	#minister {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-2);
+
+		font-size: 1.25rem;
+
+		padding-bottom: var(--spacing-2);
+	}
+</style>

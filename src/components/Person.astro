@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+
+import people from "../people.json";
+
+interface Props {
+	name: keyof typeof people;
+}
+
+const { name } = Astro.props;
+
+const person = people[name];
+---
+<div class="person">
+	<Image class="person-avatar" src={import(`../images/avatars/${name}.png`)} alt="" />
+	{person.friendlyName}
+</div>
+
+<style>
+	.person {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.person-avatar {
+		width: 2em;
+		height: 2em;
+
+		border-radius: 50%;
+	}
+</style>
